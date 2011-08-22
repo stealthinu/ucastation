@@ -6,9 +6,23 @@
   <body>
     It is Ustream channel select admin page.
 
-    <form>
-	  <input type="text" name="url">
-	  <input type="button" value="Send" onClick="send_url()">
+    <form name="panel">
+	  <input type="text" name="channel_1" value="ぬこのこ">
+      <input type="button" value="Set" onClick="displayUst(document.panel.channel_1.value, 'ust_body_1');">
+	  <input type="button" value="Send" onClick="sendChannel(document.panel.channel_1.value)">
+      <div id="ust_body_1"></div>
+      <br>
+
+	  <input type="text" name="channel_2" value="タビとチー">
+      <input type="button" value="Set" onClick="displayUst(document.panel.channel_2.value, 'ust_body_2');">
+	  <input type="button" value="Send" onClick="sendChannel(document.panel.channel_2.value)">
+      <div id="ust_body_2"></div>
+      <br>
+
+	  <input type="text" name="channel_3" value="お座敷猫ライブ">
+      <input type="button" value="Set" onClick="displayUst(document.panel.channel_3.value, 'ust_body_3');">
+	  <input type="button" value="Send" onClick="sendChannel(document.panel.channel_3.value)">
+      <div id="ust_body_3"></div>
 	</form>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>

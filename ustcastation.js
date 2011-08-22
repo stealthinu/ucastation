@@ -10,7 +10,7 @@ app.configure( function() {
 });
 app.set( 'view options', { layout: false } );
 app.get( '/admin.js', function( req, res ) {
-  res.render( 'admin.js.ejs', { port: port } );
+  res.render( 'admin.js.ejs', { port: port, key: key } );
 });
 app.get( '/view.js', function( req, res ) {
   res.render( 'view.js.ejs', { port: port, key: key } );
