@@ -20,9 +20,18 @@ app.listen( port );
 var io = require( 'socket.io' );
 var socket = io.listen( app );
 
+var channel; // デフォルトはチャンネル未選択
+
 socket.on( 'connection', function( client ) {
   console.log( "connect new client." );
   var mode = 'client';
+
+  // 接続した時既にチャンネルが選択されていたらそれを開かせる
+  if ( channel ) {
+    client.send( channel );
+  }
+
+  // --- イベント登録 
 
   client.on( 'message', function( message ) {
 	console.log( "message: " + message );
@@ -30,7 +39,8 @@ socket.on( 'connection', function( client ) {
     // admin
     if ( mode == 'admin' ) {
       console.log( "admin command" );
-      client.broadcast( message );
+      channel = message;
+      client.broadcast( channel );
     }
     // client
     else {

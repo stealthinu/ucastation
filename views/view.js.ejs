@@ -8,22 +8,5 @@ socket.on( 'connect', function() {
 });
 
 socket.on( 'message', function( channel ) {
-  displayUst( channel );
+  Player.play( channel, 'ust_main' );
 });
-
-
-// Ustの表示部分
-var autoplay_flag = 'true';
-var height = '386';
-var width = '480';
-var key = '<%= key %>';
-var ust_api = 'http://api.ustream.tv/json/channel/';
-var command = 'getCustomEmbedTag';
-
-function displayUst( channel ) {
-  var option = 'params=autoplay:' + autoplay_flag + ';mute:false;height:' + height + ';width:' + width;
-  var api = ust_api + encodeURIComponent( channel ) + '/' + command + '?' + option + '&key=' + key + '&callback=?';
-  $.getJSON( api, function( embedTag ) {
-    $('#ust_body').html( embedTag );
-  });
-}

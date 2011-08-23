@@ -1,32 +1,56 @@
 <html>
   <head>
     <title>Ustream channel select</title>
+    <link rel="stylesheet" href="video-js.css" type="text/css" media="screen" title="Video JS" charset="utf-8">
   </head>
 
   <body>
-    It is Ustream channel select admin page.
-
     <form name="panel">
-	  <input type="text" name="channel_1" value="ぬこのこ">
-      <input type="button" value="Set" onClick="displayUst(document.panel.channel_1.value, 'ust_body_1');">
-	  <input type="button" value="Send" onClick="sendChannel(document.panel.channel_1.value)">
+      <input type="text" name="channel_1" value="ぬこのこ">
+      <input type="button" value="Set" onClick="Player.play(document.panel.channel_1.value, 'ust_body_1');">
+      <input type="button" value="Send" onClick="sendChannel(document.panel.channel_1.value)">
       <div id="ust_body_1"></div>
-      <br>
 
-	  <input type="text" name="channel_2" value="タビとチー">
-      <input type="button" value="Set" onClick="displayUst(document.panel.channel_2.value, 'ust_body_2');">
-	  <input type="button" value="Send" onClick="sendChannel(document.panel.channel_2.value)">
+      <input type="text" name="channel_2" value="タビとチー">
+      <input type="button" value="Set" onClick="Player.play(document.panel.channel_2.value, 'ust_body_2');">
+      <input type="button" value="Send" onClick="sendChannel(document.panel.channel_2.value)">
       <div id="ust_body_2"></div>
+
+      <input type="text" name="channel_3" value="お座敷猫ライブ">
+      <input type="button" value="Set" onClick="Player.play(document.panel.channel_3.value, 'ust_body_3');">
+      <input type="button" value="Send" onClick="sendChannel(document.panel.channel_3.value)">
+      <div id="ust_body_3"></div>
+
       <br>
 
-	  <input type="text" name="channel_3" value="お座敷猫ライブ">
-      <input type="button" value="Set" onClick="displayUst(document.panel.channel_3.value, 'ust_body_3');">
-	  <input type="button" value="Send" onClick="sendChannel(document.panel.channel_3.value)">
-      <div id="ust_body_3"></div>
-	</form>
+      <input type="text" name="channel_4" value="ポンちゃんカメラ">
+      <input type="button" value="Set" onClick="Player.play(document.panel.channel_4.value, 'ust_body_4');">
+      <input type="button" value="Send" onClick="sendChannel(document.panel.channel_4.value)">
+      <div id="ust_body_4"></div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-<script type="text/javascript" src="socket.io.js"></script>
-<script type="text/javascript" src="admin.js"></script>
+      <input type="text" name="channel_5" value="ぷりんちゃん-犬">
+      <input type="button" value="Set" onClick="Player.play(document.panel.channel_5.value, 'ust_body_5');">
+      <input type="button" value="Send" onClick="sendChannel(document.panel.channel_5.value)">
+      <div id="ust_body_5"></div>
+
+      <input type="text" name="channel_6" value="pherpo-and-friends">
+      <input type="button" value="Set" onClick="Player.play(document.panel.channel_6.value, 'ust_body_6');">
+      <input type="button" value="Send" onClick="sendChannel(document.panel.channel_6.value)">
+      <div id="ust_body_6"></div>
+    </form>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+<script src="socket.io.js" type="text/javascript"></script>
+<script src="video.js" type="text/javascript"></script>
+<script src="videoplayer.js" type="text/javascript"></script>
+<script src="admin.js" type="text/javascript"></script>
+<script type="text/javascript">
+  Player.play(document.panel.channel_1.value, 'ust_body_1');
+  Player.play(document.panel.channel_2.value, 'ust_body_2');
+  Player.play(document.panel.channel_3.value, 'ust_body_3');
+  Player.play(document.panel.channel_4.value, 'ust_body_4');
+  Player.play(document.panel.channel_5.value, 'ust_body_5');
+  Player.play(document.panel.channel_6.value, 'ust_body_6');
+</script>
   </body>
 </html>
