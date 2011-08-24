@@ -16,13 +16,21 @@ Player = {
   height : '386',
   autoplay : 'true',
 
-  play : function( channel, target_id ) {
+  play : function( channel, target_id, width, height, autoplay ) {
+    if ( ! width ) { width = this.width }
+    if ( ! height ) { height = this.height }
+    if ( ! autoplay ) { autoplay = this.autoplay }
+
     Ust.getInfo( channel ).then( function( info ) {
-      Player.playInfo( info, target_id );
+      Player.playInfo( info, target_id, width, height, autoplay );
     });
   },
 
-  playInfo : function( info, target_id ) {
+  playInfo : function( info, target_id, width, height, autoplay ) {
+    if ( ! width ) { width = this.width }
+    if ( ! height ) { height = this.height }
+    if ( ! autoplay ) { autoplay = this.autoplay }
+
     // info.id / info.embedTag / info.urlTitleName
     // info.imageUrl.medium / info.socialStream.hashtag
 
@@ -33,19 +41,19 @@ Player = {
     // 一般用のflashのデータ
     // autoplay等の指定はgetInfoでは出来ないのでembedTagの中身をreplaceする
     var flash_tag = info.embedTag;
-    flash_tag = flash_tag.replace( /autoplay=false/g, 'autoplay=' + Player.autoplay );
-    flash_tag = flash_tag.replace( /width="320" height="260"/g, 'width="' + Player.width + '" height="' + Player.height + '"' );
+    flash_tag = flash_tag.replace( /autoplay=false/g, 'autoplay=' + autoplay );
+    flash_tag = flash_tag.replace( /width="320" height="260"/g, 'width="' + width + '" height="' + height + '"' );
 
     // Ust APIで取得した内容に置き換え
-    var target = $('#' + target_id);
-    target.addClass( 'video-js-box' );
     var video_id = target_id + '_video';
-    var video_attr = 'width="' + Player.width + '" height="' + Player.height + '" controls preload';
-    target.html( '<video id="' + video_id + '" class="video-js" ' + video_attr + '></video>' );
+    var video_attr = 'width="' + width + '" height="' + height + '" controls preload';
+    var target = $('#' + target_id);
+    target.addClass( 'video-js-box' )
+          .html( '<video id="' + video_id + '" class="video-js" ' + video_attr + '></video>' );
     var video = target.find( 'video' );
-    video.append( iphone_tag );
-    video.append( flash_tag );
-    video.find( 'object' ).addClass( 'vjs-flash-fallback' ); // fallback指定
+    video.append( iphone_tag )
+         .append( flash_tag )
+         .find( 'object' ).addClass( 'vjs-flash-fallback' ); // fallback指定
 
     // VideoJSが動く状況になった時点でPlayerを起動
     VideoJS.DOMReady( function() {
