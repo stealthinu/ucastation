@@ -27,7 +27,7 @@ var channel; // デフォルトはチャンネル未選択
 
 io.sockets.on( 'connection', function( client ) {
   var address = client.handshake.address;
-  console.log( "connect new client." +
+  console.log( "connect new client. " +
                "address:" + address.address + " port:" + address.port );
 
   var mode = 'client';
@@ -39,17 +39,19 @@ io.sockets.on( 'connection', function( client ) {
 
   // --- イベント登録 
 
-  client.on( 'admin login', function( password ) {
+  client.on( 'admin login', function( password, fn ) {
     if ( password == conf.admin_password ) {
       console.log( "admin login success." );
       mode = 'admin';
+      fn( "OK admin login" );
     }
     else {
       console.log( "warning! admin password failer." );
+      fn( "NG admin login" );
     }
   });
 
-  client.on( 'admin channel', function( ch ) {
+  client.on( 'admin channel', function( ch, fn ) {
     if ( mode != 'admin' ) {
       console.log( "warning! not admin." );
       return;
@@ -57,6 +59,7 @@ io.sockets.on( 'connection', function( client ) {
     console.log( "admin channel" );
     channel = ch;
     client.broadcast.emit( 'channel', channel );
+    fn( "OK admin channel" );
   });
 
   client.on( 'disconnect', function() {

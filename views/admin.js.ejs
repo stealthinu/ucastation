@@ -8,8 +8,24 @@ socket.on( 'connect', function() {
   console.log( "connect." );
 });
 
-socket.emit( 'admin login', password );
+socket.on( 'disconnect', function() {
+  console.log( "disconnect." );
+  $("#condition").html( "------" );
+});
+
+socket.emit( 'admin login', password, function( reply ) {
+  console.log( "admin login reply:" + reply );
+  if ( reply == "OK admin login" ) {
+    $("#condition").html( "admin login" );
+  }
+});
 
 function sendChannel( channel ) {
-  socket.emit( 'admin channel', channel );
+  $("#condition").html( "channel sending..." );
+  socket.emit( 'admin channel', channel, function( reply ) {
+    console.log( "admin channel reply:" + reply );
+    if ( reply == "OK admin channel" ) {
+      $("#condition").html( "channel send OK" );
+    }
+  });
 }
