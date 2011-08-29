@@ -21,12 +21,15 @@ app.get( '/view.js', function( req, res ) {
 });
 app.listen( conf.port );
 
+io.set( "log level", 1 );
 
 var channel; // デフォルトはチャンネル未選択
 
-io.set( "log level", 1 );
 io.sockets.on( 'connection', function( client ) {
-  console.log( "connect new client." );
+  var address = client.handshake.address;
+  console.log( "connect new client." +
+               "address:" + address.address + " port:" + address.port );
+
   var mode = 'client';
 
   // 接続した時既にチャンネルが選択されていたらそれを開かせる
