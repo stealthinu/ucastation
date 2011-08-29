@@ -1,15 +1,15 @@
 // WebSocketでの通信部分
 var port = '<%= port %>';
 var password = 'pass';
-var socket = new io.Socket( null, { port: port } );
-socket.connect();
+
+var socket = io.connect( null, { port: port } );
 
 socket.on( 'connect', function() {
   console.log( "connect." );
 });
 
-socket.send( 'admin ' + password );
+socket.emit( 'admin login', password );
 
 function sendChannel( channel ) {
-  socket.send( channel );
+  socket.emit( 'admin channel', channel );
 }

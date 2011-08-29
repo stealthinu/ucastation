@@ -1,57 +1,59 @@
-var port = 20011;
-var key = 'A1744A931A20426E5743216EB0A3379B';
-var admin_password = 'pass';
+var conf = require( './ucastation.ini' );
+// var conf = {
+//   port : 20080,
+//   key : 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+//   admin_password : '***password***'
+// };
 
 var express = require( 'express' );
 var app = express.createServer();
+var io = require( 'socket.io' ).listen( app );
 
 app.configure( function() {
   app.use( express.static( __dirname + '/public' ) );
 });
 app.set( 'view options', { layout: false } );
 app.get( '/admin.js', function( req, res ) {
-  res.render( 'admin.js.ejs', { port: port, key: key } );
+  res.render( 'admin.js.ejs', { port: conf.port, key: conf.key } );
 });
 app.get( '/view.js', function( req, res ) {
-  res.render( 'view.js.ejs', { port: port, key: key } );
+  res.render( 'view.js.ejs', { port: conf.port, key: conf.key } );
 });
-app.listen( port );
+app.listen( conf.port );
 
-var io = require( 'socket.io' );
-var socket = io.listen( app );
 
 var channel; // デフォルトはチャンネル未選択
 
-socket.on( 'connection', function( client ) {
+io.set( "log level", 1 );
+io.sockets.on( 'connection', function( client ) {
   console.log( "connect new client." );
   var mode = 'client';
 
   // 接続した時既にチャンネルが選択されていたらそれを開かせる
   if ( channel ) {
-    client.send( channel );
+    client.emit( 'channel', channel );
   }
 
   // --- イベント登録 
 
-  client.on( 'message', function( message ) {
-	console.log( "message: " + message );
-
-    // admin
-    if ( mode == 'admin' ) {
-      console.log( "admin command" );
-      channel = message;
-      client.broadcast( channel );
+  client.on( 'admin login', function( password ) {
+    if ( password == conf.admin_password ) {
+      console.log( "admin login success." );
+      mode = 'admin';
     }
-    // client
     else {
-      if ( message == 'admin ' + admin_password ) {
-        console.log( "admin login" );
-        mode = 'admin';
-      }
-      else {
-        console.log( "ignore client message" );
-      }
+      console.log( "warning! admin password failer." );
     }
+  });
+
+  client.on( 'admin channel', function( ch ) {
+    if ( mode != 'admin' ) {
+      console.log( "warning! not admin." );
+      return;
+    }
+    console.log( "admin channel" );
+    channel = ch;
+    client.broadcast.emit( 'channel', channel );
   });
 
   client.on( 'disconnect', function() {
