@@ -23,28 +23,37 @@ app.listen( conf.port );
 
 io.set( "log level", 1 );
 
-var client_num = 0;
+var view_num = 0;
 var channel; // デフォルトはチャンネル未選択
 
-io.sockets.on( 'connection', function( client ) {
+var view = io.of( '/view' ).on( 'connection', function( client ) {
   var address = client.handshake.address;
   console.log( "connect new client. " +
                "address:" + address.address + " port:" + address.port );
 
-  client_num ++;
-  var mode = 'client';
-
+  view_num ++;
+  admin.emit( 'view num', view_num );
+  
   // 接続した時既にチャンネルが選択されていたらそれを開かせる
   if ( channel ) {
     client.emit( 'channel', channel );
   }
 
-  // --- イベント登録 
+  client.on( 'disconnect', function() {
+	console.log( "disconnect" );
+    view_num --;
+    admin.emit( 'view num', view_num );
+  });
+});
+
+var admin = io.of( '/admin' ).on( 'connection', function( client ) {
+  var address = client.handshake.address;
+  console.log( "connect new admin. " +
+               "address:" + address.address + " port:" + address.port );
 
   client.on( 'admin login', function( password, fn ) {
     if ( password == conf.admin_password ) {
       console.log( "admin login success." );
-      mode = 'admin';
       fn( "OK admin login" );
     }
     else {
@@ -54,19 +63,14 @@ io.sockets.on( 'connection', function( client ) {
   });
 
   client.on( 'admin channel', function( ch, fn ) {
-    if ( mode != 'admin' ) {
-      console.log( "warning! not admin." );
-      return;
-    }
     console.log( "admin channel" );
     channel = ch;
-    client.broadcast.emit( 'channel', channel );
+    view.emit( 'channel', channel );
     fn( "OK admin channel" );
   });
 
   client.on( 'disconnect', function() {
 	console.log( "disconnect" );
-    client_num --;
   });
 });
 

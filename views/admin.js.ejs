@@ -2,7 +2,15 @@
 var port = '<%= port %>';
 var password = 'pass';
 
-var socket = io.connect( null, { port: port } );
+var socket = io.connect( "/admin", { port: port } );
+
+socket.emit( 'admin login', password, function( reply ) {
+  console.log( "admin login reply:" + reply );
+  if ( reply == "OK admin login" ) {
+    $("#condition").html( "admin login" );
+  }
+});
+
 
 socket.on( 'connect', function() {
   console.log( "connect." );
@@ -13,11 +21,8 @@ socket.on( 'disconnect', function() {
   $("#condition").html( "------" );
 });
 
-socket.emit( 'admin login', password, function( reply ) {
-  console.log( "admin login reply:" + reply );
-  if ( reply == "OK admin login" ) {
-    $("#condition").html( "admin login" );
-  }
+socket.on( 'view num', function( num ) {
+  $("#view_num").html( num );
 });
 
 function sendChannel( channel ) {

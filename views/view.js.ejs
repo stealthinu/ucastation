@@ -1,7 +1,7 @@
 // WebSocketでの通信部分
 var port = '<%= port %>';
 
-var socket = io.connect( null, { port: port } );
+var socket = io.connect( "/view", { port: port } );
 
 socket.on( 'connect', function() {
   console.log( "connect." );
