@@ -23,6 +23,7 @@ app.listen( conf.port );
 
 io.set( "log level", 1 );
 
+var client_num = 0;
 var channel; // デフォルトはチャンネル未選択
 
 io.sockets.on( 'connection', function( client ) {
@@ -30,6 +31,7 @@ io.sockets.on( 'connection', function( client ) {
   console.log( "connect new client. " +
                "address:" + address.address + " port:" + address.port );
 
+  client_num ++;
   var mode = 'client';
 
   // 接続した時既にチャンネルが選択されていたらそれを開かせる
@@ -64,6 +66,7 @@ io.sockets.on( 'connection', function( client ) {
 
   client.on( 'disconnect', function() {
 	console.log( "disconnect" );
+    client_num --;
   });
 });
 
