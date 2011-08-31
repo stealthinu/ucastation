@@ -6,73 +6,10 @@
     <link href="video-js.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8">
     <link href="common.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+    <script src="jquery.maximage.js" type="text/javascript"></script>
     <script src="http://widgets.twimg.com/j/2/widget.js" type="text/javascript"></script>
-    <script src="/socket.io/socket.io.js" type="text/javascript"></script>
-    <script src="video.js" type="text/javascript"></script>
-    <script src="videoplayer.js" type="text/javascript"></script>
-    <script src="view.js" type="text/javascript"></script>
-  </head>
-
-  <body>
-
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <h3><a href="http://miasa.info:2011/">Ucastation - 全日本大学対抗ロードレース in 美麻</a></h3>
-          <ul>
-            <li class="active"><a href="http://miasa.info:2011/">Home</a></li>
-            <li><a href="http://miasa.info">美麻Wiki</a></li>
-            <li><a href="http://www.jicf.info">JICF</a></li>
-            <li><a href="http://miasa.info/index.php?2011%A5%ED%A1%BC%A5%C9%A5%EC%A1%BC%A5%B9%A5%E9%A5%A4%A5%D6%C3%E6%B7%D1">ロードレース</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <div class="row">
-        <div class="span9">
-          <h2>main camera</h2>
-          <p><div id="ust_main"></div></p>
-          <p><div id="admin_board" class="roundbox" style="overflow:auto;width:460;height:210">
-１位:あああ大学　２位いいい大学<br>
-３位いいい大学　４位いいい大学<br>
-５位:あああ大学　６位いいい大学<br>
-７位いいい大学　８位いいい大学<br>
-９位:あああ大学　１０位いいい大学<br>
-１１位いいい大学　１２位いいい大学<br>
-１３位いいい大学　１４位いいい大学<br>
-１５位:いああ大学　１６位いうう大学<br>
-１７位いいい大学　１８位いいい大学<br>
-１９位:あいう大学　２０位:あうあ大学
-          </div></p>
-
-<!-- はてなブックマークボタン -->
-<a href="http://b.hatena.ne.jp/entry/http://miasa.info:2011/" class="hatena-bookmark-button" data-hatena-bookmark-title="Ucastation - 全日本大学対抗ロードレース in 美麻" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-
-<!-- Twitter 「tweet」ボタン -->
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="miasaroad" data-lang="ja">ツイート</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-
-<!-- Facebook 「いいね！」ボタン -->
-<iframe src="http://www.facebook.com/plugins/like.php?app_id=187292031341047&amp;href=http%3A%2F%2Fmiasa.info%3A2011&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
-
-<!-- Google+ 「+1」ボタン -->
-<g:plusone size="medium"></g:plusone>
-
-<!-- mixi 「イイネ！」ボタン -->
-<iframe src="http://plugins.mixi.jp/favorite.pl?href=http%3A%2F%2Fmiasa.info%3A2011&service_key=7a24ba5c6cab7362c1d768b22b0c0a863f7d7e59" scrolling="no" frameborder="0" allowTransparency="true" style="border:0; overflow:hidden; width:100px; height:21px;"></iframe>
-
-        </div>
-        <div class="span7">
-          <h2>sub camera</h2>
-          <p><div id="ust_sub"></div></p>
-          <p>
-<!-- tweet 表示ウィジェット -->
-<script>
-new TWTR.Widget({
+    <script type="text/javascript">
+var twtrwidgetconf = {
   version: 2,
   type: 'search',
   search: '#neko',
@@ -102,33 +39,105 @@ new TWTR.Widget({
     toptweets: true,
     behavior: 'default'
   }
-}).render().start();
-</script>
-          </p>
+};
+    </script>
+    <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+    <script src="video.js" type="text/javascript"></script>
+    <script src="videoplayer.js" type="text/javascript"></script>
+    <script src="view.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <img src="background.jpg" class="bgmaximage">
+    <div id="maincontent">
+
+      <div class="topbar">
+        <div class="fill">
+          <div class="container">
+            <h3><a href="http://miasa.info:2011/">Ucastation - 全日本大学対抗ロードレース in 美麻</a></h3>
+            <ul>
+              <li class="active"><a href="http://miasa.info:2011/">Home</a></li>
+              <li><a href="http://miasa.info">美麻Wiki</a></li>
+              <li><a href="http://www.jicf.info">JICF</a></li>
+              <li><a href="http://miasa.info/index.php?2011%A5%ED%A1%BC%A5%C9%A5%EC%A1%BC%A5%B9%A5%E9%A5%A4%A5%D6%C3%E6%B7%D1">中継概要</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <footer>
-        <p>&copy; 美麻Wiki 2011 &amp; k2net.hakuba.jp</p>
-      </footer>
+      <div class="container">
 
-    </div> <!-- /container -->
+        <div class="row">
+          <div class="span9">
+            <h2>main camera</h2>
+            <p><div id="ust_main"></div></p>
+            <p><div id="admin_board" class="roundbox" style="overflow:auto;width:460;height:210">
+１位:あああ大学　２位いいい大学<br>
+３位いいい大学　４位いいい大学<br>
+５位:あああ大学　６位いいい大学<br>
+７位いいい大学　８位いいい大学<br>
+９位:あああ大学　１０位いいい大学<br>
+１１位いいい大学　１２位いいい大学<br>
+１３位いいい大学　１４位いいい大学<br>
+１５位:いああ大学　１６位いうう大学<br>
+１７位いいい大学　１８位いいい大学<br>
+１９位:あいう大学　２０位:あうあ大学
+            </div></p>
 
-<br>
-<br>
-<br>
-Ucastationは「放送者」がリアルタイムにUstreamのチャンネルを切り替える事ができるサービスです。<br>
-例えば、多チャンネルを使って実況している場合、今見て欲しいチャンネルをユーザに放送者側が選んでユーザに見てもらう事ができます。<br>
-今後、タイムスケジュール（予約）機能を付けると、「チャンネル」を「番組」と考えた場合、放送者は「目利き」となって良さそうな「番組」のタイムスケジュールを作って、自分の「放送局」を作ることが出来る事が出来るわけです。<br>
-もっとライトな使い方では、Ustreamの予約表示として使うことが出来るでしょう。<br>
-今はUstreamのチャンネルだけですが、ニコ生とか他のストリーム系に対応することも可能です。<br>
+<!-- はてなブックマークボタン -->
+<a href="http://b.hatena.ne.jp/entry/http://miasa.info:2011/" class="hatena-bookmark-button" data-hatena-bookmark-title="Ucastation - 全日本大学対抗ロードレース in 美麻" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+<!-- Twitter 「tweet」ボタン -->
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="miasaroad" data-lang="ja">ツイート</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+<!-- Facebook 「いいね！」ボタン -->
+<iframe src="http://www.facebook.com/plugins/like.php?app_id=187292031341047&amp;href=http%3A%2F%2Fmiasa.info%3A2011&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
+
+<!-- Google+ 「+1」ボタン -->
+<g:plusone size="medium"></g:plusone>
+
+<!-- mixi 「イイネ！」ボタン -->
+<iframe src="http://plugins.mixi.jp/favorite.pl?href=http%3A%2F%2Fmiasa.info%3A2011&service_key=7a24ba5c6cab7362c1d768b22b0c0a863f7d7e59" scrolling="no" frameborder="0" allowTransparency="true" style="border:0; overflow:hidden; width:100px; height:21px;"></iframe>
+
+          </div>
+          <div class="span7">
+            <h2>sub camera</h2>
+            <p><div id="ust_sub"></div></p>
+            <p>
+<!-- twitterウィジェット -->
+<script>
+new TWTR.Widget(twtrwidgetconf).render().start();
+</script>
+            </p>
+          </div>
+        </div>
+
+        <footer>
+          <p>&cop; 美麻Wiki 2011 &amp; k2net.hakuba.jp</p>
+        </footer>
+
+      </div> <!-- /container -->
+    </div> <!-- maincontent -->
 
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
   {lang: 'ja'}
 </script>
 <script type="text/javascript">
+  // Ust表示開始
   Player.play( 'ぬこのこ', 'ust_main' );
   Player.play( 'ぬこのこ', 'ust_sub', 320, 266 );
+
+  // バックグラウンド画像表示
+  $(function(){
+    jQuery('img.bgmaximage').maxImage({
+      isBackground: true,
+      overflow: 'auto',
+      verticalAlign:'top'
+    });
+  });
 </script>
+
   </body>
 </html>
