@@ -11,3 +11,8 @@ socket.on( 'channel', function( channel ) {
   console.log( "receive channel: " + channel );
   Player.play( channel, 'ust_main' );
 });
+
+socket.on( 'board', function( text ) {
+  console.log( "receive board: " + text );
+  $("#admin_board").html( text );
+});

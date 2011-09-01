@@ -18,8 +18,8 @@ var twtrwidgetconf = {
   type: 'search',
   search: '#miasaroad',
   interval: 30000,
-  title: '#miasaroad ハッシュタグのtweetです',
-  subject: '全日本大学対抗ロードレース in 美麻 2001/9/4',
+  title: '#miasaroad ハッシュタグの付いたtweetです',
+  subject: '全日本大学対抗ロードレース in 美麻 2011/9/4',
   width: 600,
   height: 190,
   theme: {
@@ -52,8 +52,9 @@ var vh = 216 + 26; //240 + 26
 
   <body>
 
-      <!-- テスト用犬猫Ust -->
       <form name="panel">
+
+      <!-- テスト用犬猫Ust -->
         <table>
           <tr>
             <td>
@@ -116,11 +117,9 @@ var vh = 216 + 26; //240 + 26
             </td>
           </tr>
         </table>
-      </form>
 
       <!-- 本番用美麻Ust -->
 <!--
-      <form name="panel">
         <table>
           <tr>
             <td>
@@ -183,7 +182,6 @@ var vh = 216 + 26; //240 + 26
             </td>
           </tr>
         </table>
-      </form>
 -->
 
       <div class="row">
@@ -197,18 +195,24 @@ var vh = 216 + 26; //240 + 26
               接続数:
               <span id="view_num">0</span>
             </div>
+            <div class="span4">
+              <input type="button" value="お知らせ送信" onClick="sendBoard(document.panel.board.value);">
+            </div>
           </div>
-          <div id="admin_board" class="roundbox" style="overflow:auto;width:460;height:220"><p>
-１位:あああ大学　２位いいい大学<br>
-３位いいい大学　４位いいい大学<br>
-５位:あああ大学　６位いいい大学<br>
-７位いいい大学　８位いいい大学<br>
-９位:あああ大学　１０位いいい大学<br>
-１１位いいい大学　１２位いいい大学<br>
-１３位いいい大学　１４位いいい大学<br>
-１５位:いああ大学　１６位いうう大学<br>
-１７位いいい大学　１８位いいい大学<br>
-１９位:あいう大学　２０位:あうあ大学
+          <div class="roundbox" style="overflow:auto;width:460;height:220">
+            <textarea name="board" rows="15" cols="50" style="width:100%;height:95%">
+１２：００現在の順位
+　１位：あああ大学　　　　２位：いいい大学
+　３位：いいい大学　　　　４位：いいい大学
+　５位：あああ大学　　　　６位：いいい大学
+　７位：いいい大学　　　　８位：いいい大学
+　９位：あああ大学　　　１０位：いいい大学
+１１位：いいい大学　　　１２位：いいい大学
+１３位：いいい大学　　　１４位：いいい大学
+１５位：いああ大学　　　１６位：いうう大学
+１７位：いいい大学　　　１８位：いいい大学
+１９位：あいう大学　　　２０位：あうあ大学
+            </textarea>
           </p></div>
         </div>
         <div class="span7">
@@ -218,6 +222,8 @@ new TWTR.Widget(twtrwidgetconf).render().start();
 </script>
         </div>
       </div>
+
+      </form>
 
       <footer>
         <p>&cop; 美麻Wiki 2011 &amp; k2net.hakuba.jp</p>

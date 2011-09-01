@@ -34,3 +34,15 @@ function sendChannel( channel ) {
     }
   });
 }
+
+function sendBoard( text ) {
+  text = text.replace(/(\r\n|\n|\r)/g, '<br>'); // 改行を<br>に置き換え
+
+  $("#condition").html( "board sending..." );
+  socket.emit( 'admin board', text, function( reply ) {
+    console.log( "admin board reply:" + reply );
+    if ( reply == "OK admin board" ) {
+      $("#condition").html( "board send OK" );
+    }
+  });
+}
