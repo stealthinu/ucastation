@@ -12,12 +12,12 @@
 var twtrwidgetconf = {
   version: 2,
   type: 'search',
-  search: '#neko',
+  search: '#miasaroad',
   interval: 30000,
-  title: 'ねこ関係のtweet',
-  subject: '',
-  width: 320,
-  height: 320,
+  title: '#miasaroad ハッシュタグのtweetです',
+  subject: '全日本大学対抗ロードレース in 美麻 2001/9/4',
+  width: 400,
+  height: 250,
   theme: {
     shell: {
       background: '#8ec1da',
@@ -59,8 +59,8 @@ var twtrwidgetconf = {
               <li class="active"><a href="http://miasa.info:2011/">Home</a></li>
               <li><a href="http://miasa.info">美麻Wiki</a></li>
               <li><a href="http://www.jicf.info">JICF</a></li>
-              <li><a href="http://miasa.info/index.php?2011%A5%ED%A1%BC%A5%C9%A5%EC%A1%BC%A5%B9%A5%E9%A5%A4%A5%D6%C3%E6%B7%D1">中継概要</a></li>
-              <li><a href="about.html">About</a></li>
+              <li><a href="http://miasa.info/index.php?2011%A5%ED%A1%BC%A5%C9%A5%EC%A1%BC%A5%B9%A5%E9%A5%A4%A5%D6%C3%E6%B7%D1">ロードレース中継概要</a></li>
+              <li><a href="about.html">Ucastationとは</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
@@ -69,11 +69,18 @@ var twtrwidgetconf = {
 
       <div class="container">
 
+        <div class="hero-unit" style="padding:10px; opacity: 0.6; filter: progid:DXImageTransform.Microsoft.Alpha(Enabled=1,Style=0,Opacity=60);">
+          <h2>文部科学大臣杯 第67回全日本大学対抗選手権 自転車競技大会 ロードレース<br>長野県大町市美麻地区周回コース インターネットライブ中継</h2>
+          2011/9/4に、長野県大町市美麻地区周回コースで行われる第67回全日本大学対抗選手権自転車競技大会のライブ中継ページです。<br>
+          Ucastationという、Ustreamで同時マルチ配信されている番組の表示チャンネルを配信者側で切り替えできるシステムを使って配信を行います。<br>
+          この切り替えは、Ustream本家のページでは行えないため、このページで閲覧するようにしてください。<br>
+          このロードレースの件でtwitterでtweetされる場合は、ハッシュタグ「#miasaroad」をお使いください。
+        </div>
+
         <div class="row">
           <div class="span9">
-            <h2>main camera</h2>
             <p><div id="ust_main"></div></p>
-            <p><div id="admin_board" class="roundbox" style="overflow:auto;width:460;height:210">
+            <p><div id="admin_board" class="roundbox" style="overflow:auto;width:460;height:220">
 １位:あああ大学　２位いいい大学<br>
 ３位いいい大学　４位いいい大学<br>
 ５位:あああ大学　６位いいい大学<br>
@@ -103,7 +110,6 @@ var twtrwidgetconf = {
 
           </div>
           <div class="span7">
-            <h2>sub camera</h2>
             <p><div id="ust_sub"></div></p>
             <p>
 <!-- twitterウィジェット -->
@@ -127,7 +133,7 @@ new TWTR.Widget(twtrwidgetconf).render().start();
 <script type="text/javascript">
   // Ust表示開始
   Player.play( 'ぬこのこ', 'ust_main' );
-  Player.play( 'ぬこのこ', 'ust_sub', 320, 266 );
+  Player.play( 'ぬこのこ', 'ust_sub', 400, 300+26 );
 
   // バックグラウンド画像表示
   $(function(){
