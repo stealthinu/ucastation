@@ -2,6 +2,7 @@ Ust = {
   api_url : 'http://api.ustream.tv/json/channel/',
   iphone_url_head : 'http://iphone-streaming.ustream.tv/ustreamVideo/',
   iphone_url_tail : '/streams/live/playlist.m3u8',
+  socialstream_url : 'http://www.ustream.tv/socialstream/',
 
   getInfo : function( channel ) {
     var dfr = $.Deferred();
@@ -16,17 +17,17 @@ Player = {
   height : '386',
   autoplay : 'true',
 
-  play : function( channel, target_id, width, height, autoplay ) {
+  play : function( channel, target_id, width, height, autoplay, tl_target_id ) {
     if ( ! width ) { width = this.width }
     if ( ! height ) { height = this.height }
     if ( ! autoplay ) { autoplay = this.autoplay }
 
     Ust.getInfo( channel ).then( function( info ) {
-      Player.playInfo( info, target_id, width, height, autoplay );
+      Player.playInfo( info, target_id, width, height, autoplay, tl_target_id );
     });
   },
 
-  playInfo : function( info, target_id, width, height, autoplay ) {
+  playInfo : function( info, target_id, width, height, autoplay, tl_target_id ) {
     if ( ! width ) { width = this.width }
     if ( ! height ) { height = this.height }
     if ( ! autoplay ) { autoplay = this.autoplay }
@@ -44,6 +45,10 @@ Player = {
     flash_tag = flash_tag.replace( /autoplay=false/g, 'autoplay=' + autoplay );
     flash_tag = flash_tag.replace( /width="320" height="260"/g, 'width="' + width + '" height="' + height + '"' );
 
+    // ソーシャルストリームのURL
+    var socialstream_url = Ust.socialstream_url + info.id;
+    var socialstream_tag = '<a href="' + socialstream_url + '" target="_blank" >TL</a>';
+
     // Ust APIで取得した内容に置き換え
     var video_id = target_id + '_video';
     var video_attr = 'width="' + width + '" height="' + height + '" controls preload';
@@ -54,7 +59,8 @@ Player = {
     video.append( iphone_tag )
          .append( flash_tag )
          .find( 'object' ).addClass( 'vjs-flash-fallback' ); // fallback指定
-
+    $('#' + tl_target_id).html( socialstream_tag );
+    
     // VideoJSが動く状況になった時点でPlayerを起動
     VideoJS.DOMReady( function() {
       VideoJS.setup( video_id ).play();
