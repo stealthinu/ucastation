@@ -23,9 +23,10 @@ app.listen( conf.port );
 
 io.set( "log level", 1 );
 
-var view_num = 0;
+var view_num = 0; // view用で接続してるクライアント数
 var channel; // デフォルトはチャンネル未選択
 
+// view用の接続
 var view = io.of( '/view' ).on( 'connection', function( client ) {
   var address = client.handshake.address;
   console.log( "connect new client. " +
@@ -46,6 +47,7 @@ var view = io.of( '/view' ).on( 'connection', function( client ) {
   });
 });
 
+// adminからの接続
 var admin = io.of( '/admin' ).on( 'connection', function( client ) {
   var address = client.handshake.address;
   console.log( "connect new admin. " +
@@ -54,6 +56,7 @@ var admin = io.of( '/admin' ).on( 'connection', function( client ) {
   client.on( 'admin login', function( password, fn ) {
     if ( password == conf.admin_password ) {
       console.log( "admin login success." );
+      admin.emit( 'view num', view_num );
       fn( "OK admin login" );
     }
     else {
