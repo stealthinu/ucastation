@@ -7,7 +7,7 @@ var socket = io.connect( "/admin", { port: port } );
 socket.emit( 'admin login', password, function( reply ) {
   console.log( "admin login reply:" + reply );
   if ( reply == "OK admin login" ) {
-    $("#condition").html( "admin login" );
+    $("#condition").html( "<div class='alert-message success'>管理者認証成功</div>" );
   }
 });
 
@@ -18,19 +18,25 @@ socket.on( 'connect', function() {
 
 socket.on( 'disconnect', function() {
   console.log( "disconnect." );
-  $("#condition").html( "------" );
+  $("#condition").html( "<div class='alert-message error'>切断</div>" );
 });
 
-socket.on( 'view num', function( num ) {
-  $("#view_num").html( num );
+//socket.on( 'channel', function( ch ) {});
+
+socket.on( 'board', function( text ) {
+  $("#board").html( text );
+});
+
+socket.on( 'viewnum', function( num ) {
+  $("#view_num").html( "<div class='alert-message info'>接続数：" + num + "</div>" );
 });
 
 function sendChannel( channel ) {
-  $("#condition").html( "channel sending..." );
+  $("#condition").html( "<div class='alert-message info'>チャンネル送信中...</div>" );
   socket.emit( 'admin channel', channel, function( reply ) {
     console.log( "admin channel reply:" + reply );
     if ( reply == "OK admin channel" ) {
-      $("#condition").html( "channel send OK" );
+      $("#condition").html( "<div class='alert-message success'>チャンネル送信成功</div>" );
     }
   });
 }
@@ -38,11 +44,11 @@ function sendChannel( channel ) {
 function sendBoard( text ) {
   text = text.replace(/(\r\n|\n|\r)/g, '<br>'); // 改行を<br>に置き換え
 
-  $("#condition").html( "board sending..." );
+  $("#condition").html( "<div class='alert-message info'>告知送信中...</div>" );
   socket.emit( 'admin board', text, function( reply ) {
     console.log( "admin board reply:" + reply );
     if ( reply == "OK admin board" ) {
-      $("#condition").html( "board send OK" );
+      $("#condition").html( "<div class='alert-message success'>告知送信成功</div>" );
     }
   });
 }

@@ -62,7 +62,10 @@ var admin = io.of( '/admin' ).on( 'connection', function( client ) {
   client.on( 'admin login', function( password, fn ) {
     if ( password == conf.admin_password ) {
       console.log( "admin login success." );
-      admin.emit( 'view num', view_num );
+      // 現在のチャンネルと告知内容、接続数を管理者へ送る
+      //admin.emit( 'channel', channel );
+      admin.emit( 'board', board );
+      admin.emit( 'viewnum', view_num );
       fn( "OK admin login" );
     }
     else {

@@ -18,7 +18,7 @@ var twtrwidgetconf = {
   type: 'search',
   search: '#miasaroad',
   interval: 30000,
-  title: '#miasaroad ハッシュタグの付いたtweetです',
+  title: '「#miasaroad」ハッシュタグの付いたtweetです',
   subject: '全日本大学対抗ロードレース in 美麻 2011/9/4',
   width: 400,
   height: 250,
@@ -74,7 +74,7 @@ var twtrwidgetconf = {
           2011/9/4に、長野県大町市美麻地区周回コースで行われる第67回全日本大学対抗選手権自転車競技大会のライブ中継ページです。<br>
           Ucastationという、Ustreamで同時マルチ配信されている番組の表示チャンネルを配信者側で切り替えできるシステムを使って配信を行います。<br>
           この切り替えは、Ustream本家のページでは行えないため、このページで閲覧するようにしてください。<br>
-          このロードレースの件でtwitterでtweetされる場合は、ハッシュタグ「#miasaroad」をお使いください。
+          このロードレースの件でtwitterでtweetされる場合は、ハッシュタグ「<strong>#miasaroad</strong>」をお使いください。
         </div>
 
         <div class="row">
@@ -110,7 +110,7 @@ new TWTR.Widget(twtrwidgetconf).render().start();
         </div>
 
         <footer>
-          <p>&corp; 美麻Wiki 2011 &amp; k2net.hakuba.jp</p>
+          <p>(c) 美麻Wiki 2011 &amp; k2net.hakuba.jp</p>
         </footer>
 
       </div> <!-- /container -->
@@ -121,8 +121,8 @@ new TWTR.Widget(twtrwidgetconf).render().start();
 </script>
 <script type="text/javascript">
   // Ust表示開始
-  Player.play( 'ぬこのこ', 'ust_main' );
-  Player.play( 'ぬこのこ', 'ust_sub', 400, 300+26 );
+  Player.play( 'miasa-tv-ch6', 'ust_main' );
+  Player.play( 'miasa-tv-ch1', 'ust_sub', 400, 300+26 );
 
   // バックグラウンド画像表示
   $(function(){
