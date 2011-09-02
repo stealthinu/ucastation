@@ -14,7 +14,7 @@ Tweet = {
     var api_url = "http://search.twitter.com/search.json?q="
       + encodeURIComponent(search_word) + "&rpp=" + count + "&callback=" + callback_func;
     this.callJSONP( api_url );
-    setInterval( function() { this.callJSONP( api_url ) }, update_time*1000 );
+    setInterval( function() { Tweet.callJSONP( api_url ) }, update_time*1000 );
   },
 
   updateLoopUser : function( user, timeline_id, count, update_time ) {

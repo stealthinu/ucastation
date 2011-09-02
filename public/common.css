@@ -36,6 +36,15 @@ img.bgmaximage {
   width: 100%;
 }
 
+div.topbar {
+  position: relative;
+}
+
+div.hero-unit {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 strong {
   color: maroon;
 }

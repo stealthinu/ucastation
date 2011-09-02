@@ -1,5 +1,34 @@
-ol.statuses {list-style:none;font-size:14px;padding-left:0px;margin-top:0px;margin-bottom:0px}
-ol.statuses li {position:relative;padding:5px 0 3px 0;border-bottom:1px solid #eee;line-height:16px;zoom:1;}
-ol.statuses .thumb {display:block;width:50px;height:50px;left:0;margin:0 0 0 0;overflow:hidden}
-ol.statuses .thumb img{border-style:none;width:48px;height:48px;}
-ol.statuses .status-body {position:relative;display:block;overflow:hidden;min-height:48px;margin-left:56px;margin-top:-50px;}
+ol.tweet_statuses {
+  list-style: none;
+  font-size: 13px;
+  padding-left: 0px;
+  margin: 0 0 0 0;
+}
+ol.tweet_statuses li {
+  position: relative;
+  padding: 5px 0 3px 0;
+  border-bottom: 1px solid #eee;
+  line-height: 18px;
+  zoom:1;
+}
+ol.tweet_statuses .thumb {
+  display: block;
+  width: 50px;
+  height: 50px;
+  left: 0;
+  margin: 0 0 0 0;
+  overflow: hidden
+}
+ol.tweet_statuses .thumb img{
+  border-style:none;
+  width: 48px;
+  height: 48px;
+}
+ol.tweet_statuses .status-body {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 48px;
+  margin-left: 56px;
+  margin-top: -50px;
+}

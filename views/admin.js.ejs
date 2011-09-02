@@ -24,6 +24,8 @@ socket.on( 'disconnect', function() {
 //socket.on( 'channel', function( ch ) {});
 
 socket.on( 'board', function( text ) {
+  text = text.replace(/<br>/g, '\n'); // <br>を改行に置き換え
+
   $("#board").html( text );
 });
 
