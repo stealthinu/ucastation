@@ -35,3 +35,7 @@ img.bgmaximage {
   z-index: 50;
   width: 100%;
 }
+
+strong {
+  color: maroon;
+}
