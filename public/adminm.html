@@ -123,84 +123,42 @@ var vh = 216 + 26; //240 + 26
 -->
 
       <!-- 本番用美麻Ust -->
-        <table>
-          <tr>
-            <td>
-              <input type="radio" name="selected_stream" id="radio_1" onClick="sendChannel(document.panel.channel_1.value)">
-              <input type="hidden" name="channel_1" value="miasa-tv-ch1">カメラ１（本部スタート・ゴール前）
-              <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_1.value, 'ust_body_1', vw, vh);">
-              <span id="ust_tl_1">TL</span>
-              <div id="ust_body_1"></div>
-            </td>
-            <td>
-              <input type="radio" name="selected_stream" id="radio_2" onClick="sendChannel(document.panel.channel_2.value)">
-              <input type="hidden" name="channel_2" value="miasa-tv-ch2">カメラ２（二重　宮村）
-              <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_2.value, 'ust_body_2', vw, vh);">
-              <span id="ust_tl_2">TL</span>
-              <div id="ust_body_2"></div>
-            </td>
-            <td>
-              <input type="radio" name="selected_stream" id="radio_3" onClick="sendChannel(document.panel.channel_3.value)">
-              <input type="hidden" name="channel_3" value="miasa-tv-ch3">カメラ３（大塩　中村）
-              <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_3.value, 'ust_body_3', vw, vh);">
-              <span id="ust_tl_3">TL</span>
-              <div id="ust_body_3"></div>
-            </td>
-            <td>
-              <input type="radio" name="selected_stream" id="radio_4" onClick="sendChannel(document.panel.channel_4.value)">
-              <input type="hidden" name="channel_4" value="miasa-tv-ch4">カメラ４（折り返し地点周辺：モバイル）
-              <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_4.value, 'ust_body_4', vw, vh);">
-              <span id="ust_tl_4">TL</span>
-              <div id="ust_body_4"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="radio" name="selected_stream" id="radio_5" onClick="sendChannel(document.panel.channel_5.value)">
-              <input type="hidden" name="channel_5" value="miasa-tv-ch5">カメラ５（二重　向）
-              <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_5.value, 'ust_body_5', vw, vh);">
-              <span id="ust_tl_5">TL</span>
-              <div id="ust_body_5"></div>
-            </td>
-            <td>
-              <input type="radio" name="selected_stream" id="radio_6" onClick="sendChannel(document.panel.channel_6.value)">
-              <input type="hidden" name="channel_6" value="miasa-tv-ch6">カメラ６（ゴール前）
-              <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_6.value, 'ust_body_6', vw, vh);">
-              <span id="ust_tl_6">TL</span>
-              <div id="ust_body_6"></div>
-            </td>
-            <td>
-              <input type="radio" name="selected_stream" id="radio_7" onClick="sendChannel(document.panel.channel_7.value)">
-              <input type="hidden" name="channel_7" value="miasa-tv-ch7">カメラ７（モバイル中継用）
-              <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_7.value, 'ust_body_7', vw, vh);">
-              <span id="ust_tl_7">TL</span>
-              <div id="ust_body_7"></div>
-            </td>
-            <td>
-              <input type="radio" name="selected_stream" id="radio_8" onClick="sendChannel(document.panel.channel_8.value)">
-              <input type="text" name="channel_8" value="ぬこのこ">
-              <input type="button" value="Set" onClick="Player.play(document.panel.channel_8.value, 'ust_body_8', vw, vh);">
-              <span id="ust_tl_8">TL</span>
-              <div id="ust_body_8"></div>
-            </td>
-          </tr>
-        </table>
+<ul class="unstyled">
+  <li>
+    <input type="radio" name="selected_stream" id="radio_1" onClick="sendChannel(document.panel.channel_1.value)">
+    <input type="hidden" name="channel_1" value="miasa-tv-ch1">カメラ１（本部スタート・ゴール前）
+    <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_1.value, 'ust_body_1', vw, vh);">
+  <li>
+    <input type="radio" name="selected_stream" id="radio_2" onClick="sendChannel(document.panel.channel_2.value)">
+    <input type="hidden" name="channel_2" value="miasa-tv-ch2">カメラ２（二重　宮村）
+    <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_2.value, 'ust_body_2', vw, vh);">
+  <li>
+    <input type="radio" name="selected_stream" id="radio_3" onClick="sendChannel(document.panel.channel_3.value)">
+    <input type="hidden" name="channel_3" value="miasa-tv-ch3">カメラ３（大塩　中村）
+    <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_3.value, 'ust_body_3', vw, vh);">
+  <li>
+    <input type="radio" name="selected_stream" id="radio_4" onClick="sendChannel(document.panel.channel_4.value)">
+    <input type="hidden" name="channel_4" value="miasa-tv-ch4">カメラ４（折り返し地点周辺：モバイル）
+    <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_4.value, 'ust_body_4', vw, vh);">
+  <li>
+    <input type="radio" name="selected_stream" id="radio_5" onClick="sendChannel(document.panel.channel_5.value)">
+    <input type="hidden" name="channel_5" value="miasa-tv-ch5">カメラ５（二重　向）
+    <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_5.value, 'ust_body_5', vw, vh);">
+  <li>
+    <input type="radio" name="selected_stream" id="radio_6" onClick="sendChannel(document.panel.channel_6.value)">
+    <input type="hidden" name="channel_6" value="miasa-tv-ch6">カメラ６（ゴール前）
+    <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_6.value, 'ust_body_6', vw, vh);">
+  <li>
+    <input type="radio" name="selected_stream" id="radio_7" onClick="sendChannel(document.panel.channel_7.value)">
+    <input type="hidden" name="channel_7" value="miasa-tv-ch7">カメラ７（モバイル中継用）
+    <input type="hidden" value="Set" onClick="Player.play(document.panel.channel_7.value, 'ust_body_7', vw, vh);">
+  <li>
+    <input type="radio" name="selected_stream" id="radio_8" onClick="sendChannel(document.panel.channel_8.value)">
+    <input type="text" name="channel_8" value="ぬこのこ">
+    <input type="button" value="Set" onClick="Player.play(document.panel.channel_8.value, 'ust_body_8', vw, vh);">
+</ul>
 
-      <div class="row">
-        <div class="span1"><p></p></div>
-        <div class="span9">
-          <div class="row">
-            <div class="span3">
-              <span id="condition"></span>
-            </div>
-            <div class="span3">
-              <span id="view_num"></span>
-            </div>
-            <div class="span3">
-              <a class="btn" href="#" onClick="sendBoard(document.panel.board.value);">お知らせ送信</a>
-            </div>
-          </div>
-          <textarea name="board" id="board" rows="15" cols="50" style="width:460;height:220">
+<textarea name="board" id="board" rows="15" cols="50" style="width:460;height:220">
 １２：００現在の順位
 　１位：あああ大学　　　　２位：いいい大学
 　３位：いいい大学　　　　４位：いいい大学
@@ -212,9 +170,20 @@ var vh = 216 + 26; //240 + 26
 １５位：いああ大学　　　１６位：いうう大学
 １７位：いいい大学　　　１８位：いいい大学
 １９位：あいう大学　　　２０位：あうあ大学
-          </textarea>
-        </div>
-        <div class="span7">
+</textarea>
+<p>
+<a class="btn" href="#" onClick="sendBoard(document.panel.board.value);">お知らせ送信</a>
+</p>
+
+<div class="row">
+  <div class="span3">
+    <span id="condition"></span>
+  </div>
+  <div class="span3">
+    <span id="view_num"></span>
+  </div>
+</div>
+
 <!-- tweet表示 -->
 <div class="roundbox" style="overflow:auto;width:380;height:260">
   <ol id="timeline" class="tweet_statuses"></ol>
@@ -225,8 +194,6 @@ var vh = 216 + 26; //240 + 26
 new TWTR.Widget(twtrwidgetconf).render().start();
 </script>
 -->
-        </div>
-      </div>
 
       </form>
 
@@ -238,16 +205,6 @@ new TWTR.Widget(twtrwidgetconf).render().start();
 <script type="text/javascript">
   // Tweet表示開始
   Tweet.updateLoopSearch( "#miasaroad", "timeline", 100, 30 );
-
-  // Ust表示開始
-  Player.play(document.panel.channel_1.value, 'ust_body_1', vw, vh, 'true', 'ust_tl_1');
-  Player.play(document.panel.channel_2.value, 'ust_body_2', vw, vh, 'true', 'ust_tl_2');
-  Player.play(document.panel.channel_3.value, 'ust_body_3', vw, vh, 'true', 'ust_tl_3');
-  Player.play(document.panel.channel_4.value, 'ust_body_4', vw, vh, 'true', 'ust_tl_4');
-  Player.play(document.panel.channel_5.value, 'ust_body_5', vw, vh, 'true', 'ust_tl_5');
-  Player.play(document.panel.channel_6.value, 'ust_body_6', vw, vh, 'true', 'ust_tl_6');
-  Player.play(document.panel.channel_7.value, 'ust_body_7', vw, vh, 'true', 'ust_tl_7');
-//  Player.play(document.panel.channel_8.value, 'ust_body_8', vw, vh, 'true', 'ust_tl_8');
 </script>
   </body>
 </html>
