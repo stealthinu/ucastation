@@ -42,6 +42,7 @@ Tweet = {
   convertSearchedTweets : function( searchs ) {
     var s = "";
     for ( var i in searchs["results"] ) {
+      if (! i.match(/[^0-9]+/)) { // IE8だとなぜか"filter"と"indexOf"が入るので対策
       var username = searchs["results"][i].from_user;
       var id = searchs["results"][i].id;
       var profile_image_url = searchs["results"][i].profile_image_url;
@@ -49,6 +50,7 @@ Tweet = {
       var status = searchs["results"][i].text;
       var tweet_html = this.makeTweetTag( username, id, profile_image_url, created_at, status );
       s += tweet_html;
+      }
     }
     return s;
   },

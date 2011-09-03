@@ -35,7 +35,7 @@ var view = io.of( '/view' ).on( 'connection', function( client ) {
 
   // 新しい接続があったら管理者へ現在の接続数を送信
   view_num ++;
-  admin.emit( 'view num', view_num );
+  admin.emit( 'viewnum', view_num );
   
   // 接続時、クライアントに現在のチャンネルと管理者からのお知らせを送信
   if ( channel ) {
@@ -48,7 +48,7 @@ var view = io.of( '/view' ).on( 'connection', function( client ) {
 	console.log( "disconnect" );
     // 管理者へ減った接続数を送信
     view_num --;
-    admin.emit( 'view num', view_num );
+    admin.emit( 'viewnum', view_num );
   });
 });
 
